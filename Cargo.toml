@@ -1,0 +1,8 @@
+[package]
+name = "rust-webgl2-example"
+version = "0.1.1"
+authors = ["Wolfie <wolfiewerewolf@gmail.com>; Yosuke ONOUE <onoue@likr-lab.com>"]
+
+[dependencies]
+gleam = "0.4"
+emscripten-sys = "0.3"
