@@ -46,4 +46,6 @@ $ cargo build --release --target=asmjs-unknown-emscripten
 but you will have to comment the wasm related call and uncomment the asmjs related call in
 the index.html script stags.
 
+![alt text](./images/cube.gif "Rotating Cube")
+
 
