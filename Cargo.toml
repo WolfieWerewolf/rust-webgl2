@@ -2,12 +2,8 @@
 name = "rust-webgl2-example"
 version = "0.1.1"
 authors = ["Wolfie <wolfiewerewolf@gmail.com>; Yosuke ONOUE <onoue@likr-lab.com>"]
-#build = "build.rs"
 
 [dependencies]
 emscripten-sys = "0.3"
 gleam = { path = "gleam" }
-
 #gleam = "0.4"
-[build-dependencies.gl_generator]
-version = "0.9"

@@ -1,0 +1,7 @@
+https://stackoverflow.com/questions/21371534/in-rust-is-there-a-way-to-iterate-through-the-values-of-an-enum
+https://github.com/rust-lang/cargo/issues/1106
+https://stackoverflow.com/questions/33025887/how-to-use-a-local-unpublished-crate
+
+/** TODO - Can we automate this? */
+https://medium.com/@ianjsikes/get-started-with-rust-webassembly-and-webpack-58d28e219635
+https://github.com/ianjsikes/rust-wasm-webpack-tutorial
