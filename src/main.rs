@@ -4,12 +4,14 @@ extern crate emscripten_sys;
 mod matrix;
 mod context;
 
+
 use context::{
     Context,
     loop_wrapper
 };
 
 use gleam::gl;
+
 
 use emscripten_sys::{
     emscripten_set_main_loop_arg,
@@ -21,14 +23,9 @@ use emscripten_sys::{
 };
 
 
-
-
 fn main() {
 
-//    let excluded = vec2(
-//        "glClearBufferfv",
-//        "glClearBufferiv"
-//    );
+    //let excluded = vec!["glClearBufferfv", "glClearBufferiv"];
 
     unsafe {
         let mut attributes: EmscriptenWebGLContextAttributes = std::mem::uninitialized();
@@ -42,12 +39,13 @@ fn main() {
         emscripten_webgl_make_context_current(handle);
 
 
+        // We need this pull request: https://github.com/kripken/emscripten/pull/4829 */
         let gl = gl::GlesFns::load_with(|addr| {
             let addr = std::ffi::CString::new(addr).unwrap();
-
-            emscripten_GetProcAddress(addr.as_ptr() as *const _) as *const _
-
+            emscripten_GetProcAddress(addr.into_raw() as *const _) as *const _
         });
+
+
 
 //        let gl = gl::GlFns::load_with(|addr| {
 //            let addr = std::ffi::CString::new(addr).unwrap();
@@ -55,8 +53,16 @@ fn main() {
 //        });
 
 
+
+
         let mut ctx = Context::new(gl);
         let ptr = &mut ctx as *mut _ as *mut std::os::raw::c_void;
         emscripten_set_main_loop_arg(Some(loop_wrapper), ptr, 0, 1);
     }
+
 }
+
+// TODO - Can we automate this? */
+//https://medium.com/@ianjsikes/get-started-with-rust-webassembly-and-webpack-58d28e219635
+//https://github.com/ianjsikes/rust-wasm-webpack-tutorial
+
