@@ -118,6 +118,7 @@ fn load_shader(gl: &GlPtr, shader_type: GLenum, source: &[&[u8]]) -> Option<GLui
     Some(shader)
 }
 
+
 const VS_SRC: &'static [&[u8]] = &[b"#version 300 es
         layout(location = 0) in vec3 aPosition;
         layout(location = 1) in vec3 aColor;

@@ -29,16 +29,16 @@
     };
     </script>
 
-    <script src="target/asmjs-unknown-emscripten/release/rust-webgl2-example.js"></script>
-        <!--<script>-->
-        <!--fetch('target/wasm32-unknown-emscripten/release/rust_webgl2_example.wasm')-->
-          <!--.then((response) => response.arrayBuffer())-->
-          <!--.then((buffer) => {-->
-            <!--Module.wasmBinary = buffer;-->
-            <!--var script = document.createElement('script');-->
-            <!--script.src = "target/wasm32-unknown-emscripten/release/rust-webgl2-example.js";-->
-            <!--document.body.appendChild(script)-->
-          <!--})-->
-        <!--</script>-->
+    <!--<script src="target/asmjs-unknown-emscripten/release/rust-webgl2-example.js"></script>-->
+        <script>
+        fetch('target/wasm32-unknown-emscripten/release/rust_webgl2_example.wasm')
+          .then((response) => response.arrayBuffer())
+          .then((buffer) => {
+            Module.wasmBinary = buffer;
+            var script = document.createElement('script');
+            script.src = "target/wasm32-unknown-emscripten/release/rust-webgl2-example.js";
+            document.body.appendChild(script)
+          })
+        </script>
     </body>
 </html>

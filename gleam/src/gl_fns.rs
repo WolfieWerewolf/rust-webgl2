@@ -156,11 +156,11 @@ impl Gl for GlFns {
         result
     }
 
-    fn begin_query(&self, target: GLenum, id: GLuint) {
-        unsafe {
-            self.ffi_gl_.BeginQuery(target, id);
-        }
-    }
+//    fn begin_query(&self, target: GLenum, id: GLuint) {
+//        unsafe {
+//            self.ffi_gl_.BeginQuery(target, id);
+//        }
+//    }
 
     fn end_query(&self, target: GLenum) {
         unsafe {
@@ -206,11 +206,11 @@ impl Gl for GlFns {
         result
     }
 
-    fn delete_queries(&self, queries: &[GLuint]) {
-        unsafe {
-            self.ffi_gl_.DeleteQueries(queries.len() as GLsizei, queries.as_ptr());
-        }
-    }
+//    fn delete_queries(&self, queries: &[GLuint]) {
+//        unsafe {
+//            self.ffi_gl_.DeleteQueries(queries.len() as GLsizei, queries.as_ptr());
+//        }
+//    }
 
     fn delete_vertex_arrays(&self, vertex_arrays: &[GLuint]) {
         unsafe {
@@ -314,17 +314,17 @@ impl Gl for GlFns {
         result
     }
 
-    fn bind_buffer_base(&self, target: GLenum, index: GLuint, buffer: GLuint) {
-        unsafe {
-            self.ffi_gl_.BindBufferBase(target, index, buffer);
-        }
-    }
+//    fn bind_buffer_base(&self, target: GLenum, index: GLuint, buffer: GLuint) {
+//        unsafe {
+//            self.ffi_gl_.BindBufferBase(target, index, buffer);
+//        }
+//    }
 
-    fn bind_buffer_range(&self, target: GLenum, index: GLuint, buffer: GLuint, offset: GLintptr, size: GLsizeiptr) {
-        unsafe {
-            self.ffi_gl_.BindBufferRange(target, index, buffer, offset, size);
-        }
-    }
+//    fn bind_buffer_range(&self, target: GLenum, index: GLuint, buffer: GLuint, offset: GLintptr, size: GLsizeiptr) {
+//        unsafe {
+//            self.ffi_gl_.BindBufferRange(target, index, buffer, offset, size);
+//        }
+//    }
 
     fn uniform_block_binding(&self, program: GLuint, uniform_block_index: GLuint, uniform_block_binding: GLuint) {
         unsafe {
@@ -490,28 +490,28 @@ impl Gl for GlFns {
         }
     }
 
-    fn copy_tex_sub_image_3d(&self,
-                             target: GLenum,
-                             level: GLint,
-                             xoffset: GLint,
-                             yoffset: GLint,
-                             zoffset: GLint,
-                             x: GLint,
-                             y: GLint,
-                             width: GLsizei,
-                             height: GLsizei) {
-        unsafe {
-            self.ffi_gl_.CopyTexSubImage3D(target,
-                                           level,
-                                           xoffset,
-                                           yoffset,
-                                           zoffset,
-                                           x,
-                                           y,
-                                           width,
-                                           height);
-        }
-    }
+//    fn copy_tex_sub_image_3d(&self,
+//                             target: GLenum,
+//                             level: GLint,
+//                             xoffset: GLint,
+//                             yoffset: GLint,
+//                             zoffset: GLint,
+//                             x: GLint,
+//                             y: GLint,
+//                             width: GLsizei,
+//                             height: GLsizei) {
+//        unsafe {
+//            self.ffi_gl_.CopyTexSubImage3D(target,
+//                                           level,
+//                                           xoffset,
+//                                           yoffset,
+//                                           zoffset,
+//                                           x,
+//                                           y,
+//                                           width,
+//                                           height);
+//        }
+//    }
 
     fn tex_sub_image_2d(&self,
                         target: GLenum,
@@ -710,30 +710,30 @@ impl Gl for GlFns {
         }
     }
 
-    fn blit_framebuffer(&self,
-                        src_x0: GLint,
-                        src_y0: GLint,
-                        src_x1: GLint,
-                        src_y1: GLint,
-                        dst_x0: GLint,
-                        dst_y0: GLint,
-                        dst_x1: GLint,
-                        dst_y1: GLint,
-                        mask: GLbitfield,
-                        filter: GLenum) {
-        unsafe {
-            self.ffi_gl_.BlitFramebuffer(src_x0,
-                                         src_y0,
-                                         src_x1,
-                                         src_y1,
-                                         dst_x0,
-                                         dst_y0,
-                                         dst_x1,
-                                         dst_y1,
-                                         mask,
-                                         filter);
-        }
-    }
+//    fn blit_framebuffer(&self,
+//                        src_x0: GLint,
+//                        src_y0: GLint,
+//                        src_x1: GLint,
+//                        src_y1: GLint,
+//                        dst_x0: GLint,
+//                        dst_y0: GLint,
+//                        dst_x1: GLint,
+//                        dst_y1: GLint,
+//                        mask: GLbitfield,
+//                        filter: GLenum) {
+//        unsafe {
+//            self.ffi_gl_.BlitFramebuffer(src_x0,
+//                                         src_y0,
+//                                         src_x1,
+//                                         src_y1,
+//                                         dst_x0,
+//                                         dst_y0,
+//                                         dst_x1,
+//                                         dst_y1,
+//                                         mask,
+//                                         filter);
+//        }
+//    }
 
     fn vertex_attrib_4f(&self,
                         index: GLuint,
@@ -1590,11 +1590,11 @@ impl Gl for GlFns {
         }
     }
 
-    fn client_wait_sync(&self, sync: GLsync, flags: GLbitfield, timeout: GLuint64) {
-        unsafe {
-            self.ffi_gl_.ClientWaitSync(sync as *const _, flags, timeout);
-        }
-    }
+//    fn client_wait_sync(&self, sync: GLsync, flags: GLbitfield, timeout: GLuint64) {
+//        unsafe {
+//            self.ffi_gl_.ClientWaitSync(sync as *const _, flags, timeout);
+//        }
+//    }
 
     fn wait_sync(&self, sync: GLsync, flags: GLbitfield, timeout: GLuint64) {
         unsafe {

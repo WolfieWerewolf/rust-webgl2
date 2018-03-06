@@ -17,8 +17,16 @@ use emscripten_sys::{
     emscripten_webgl_init_context_attributes,
     emscripten_webgl_create_context,
     emscripten_webgl_make_context_current,
-    EmscriptenWebGLContextAttributes,
+    EmscriptenWebGLContextAttributes
 };
+
+#[link(name = "_hello_world")]
+extern {}
+
+#[no_mangle]
+pub extern fn hello_world(n: std::os::raw::c_int) -> std::os::raw::c_int {
+    n + 1
+}
 
 fn main() {
 
@@ -43,6 +51,8 @@ fn main() {
         let ptr = &mut ctx as *mut _ as *mut std::os::raw::c_void;
         emscripten_set_main_loop_arg(Some(loop_wrapper), ptr, 0, 1);
     }
+
+
 
 }
 

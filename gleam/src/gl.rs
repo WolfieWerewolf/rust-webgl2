@@ -103,14 +103,14 @@ pub trait Gl {
     fn gen_textures(&self, n: GLsizei) -> Vec<GLuint>;
     fn gen_vertex_arrays(&self, n: GLsizei) -> Vec<GLuint>;
     fn gen_queries(&self, n: GLsizei) -> Vec<GLuint>;
-    fn begin_query(&self, target: GLenum, id: GLuint);
+    //fn begin_query(&self, target: GLenum, id: GLuint);
     fn end_query(&self, target: GLenum);
     fn query_counter(&self, id: GLuint, target: GLenum);
     fn get_query_object_iv(&self, id: GLuint, pname: GLenum) -> i32;
     fn get_query_object_uiv(&self, id: GLuint, pname: GLenum) -> u32;
     fn get_query_object_i64v(&self, id: GLuint, pname: GLenum) -> i64;
     fn get_query_object_ui64v(&self, id: GLuint, pname: GLenum) -> u64;
-    fn delete_queries(&self, queries: &[GLuint]);
+    //fn delete_queries(&self, queries: &[GLuint]);
     fn delete_vertex_arrays(&self, vertex_arrays: &[GLuint]);
     fn delete_buffers(&self, buffers: &[GLuint]);
     fn delete_renderbuffers(&self, renderbuffers: &[GLuint]);
@@ -132,8 +132,8 @@ pub trait Gl {
     fn bind_attrib_location(&self, program: GLuint, index: GLuint, name: &str);
     fn get_uniform_block_index(&self, program: GLuint, name: &str) -> GLuint;
     fn get_uniform_indices(&self,  program: GLuint, names: &[&str]) -> Vec<GLuint>;
-    fn bind_buffer_base(&self, target: GLenum, index: GLuint, buffer: GLuint);
-    fn bind_buffer_range(&self, target: GLenum, index: GLuint, buffer: GLuint, offset: GLintptr, size: GLsizeiptr);
+    //fn bind_buffer_base(&self, target: GLenum, index: GLuint, buffer: GLuint);
+    //fn bind_buffer_range(&self, target: GLenum, index: GLuint, buffer: GLuint, offset: GLintptr, size: GLsizeiptr);
     fn uniform_block_binding(&self,
                              program: GLuint,
                              uniform_block_index: GLuint,
@@ -199,16 +199,16 @@ pub trait Gl {
                              y: GLint,
                              width: GLsizei,
                              height: GLsizei);
-    fn copy_tex_sub_image_3d(&self,
-                             target: GLenum,
-                             level: GLint,
-                             xoffset: GLint,
-                             yoffset: GLint,
-                             zoffset: GLint,
-                             x: GLint,
-                             y: GLint,
-                             width: GLsizei,
-                             height: GLsizei);
+//    fn copy_tex_sub_image_3d(&self,
+//                             target: GLenum,
+//                             level: GLint,
+//                             xoffset: GLint,
+//                             yoffset: GLint,
+//                             zoffset: GLint,
+//                             x: GLint,
+//                             y: GLint,
+//                             width: GLsizei,
+//                             height: GLsizei);
     fn tex_sub_image_2d(&self,
                         target: GLenum,
                         level: GLint,
@@ -281,17 +281,17 @@ pub trait Gl {
                                  texture: GLuint,
                                  level: GLint,
                                  layer: GLint);
-    fn blit_framebuffer(&self,
-                        src_x0: GLint,
-                        src_y0: GLint,
-                        src_x1: GLint,
-                        src_y1: GLint,
-                        dst_x0: GLint,
-                        dst_y0: GLint,
-                        dst_x1: GLint,
-                        dst_y1: GLint,
-                        mask: GLbitfield,
-                        filter: GLenum);
+//    fn blit_framebuffer(&self,
+//                        src_x0: GLint,
+//                        src_y0: GLint,
+//                        src_x1: GLint,
+//                        src_y1: GLint,
+//                        dst_x0: GLint,
+//                        dst_y0: GLint,
+//                        dst_x1: GLint,
+//                        dst_y1: GLint,
+//                        mask: GLbitfield,
+//                        filter: GLenum);
     fn vertex_attrib_4f(&self, index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat);
     fn vertex_attrib_pointer_f32(&self,
                                  index: GLuint,
@@ -435,7 +435,7 @@ pub trait Gl {
     fn push_group_marker_ext(&self, message: &str);
     fn pop_group_marker_ext(&self);
     fn fence_sync(&self, condition: GLenum, flags: GLbitfield) -> GLsync;
-    fn client_wait_sync(&self, sync: GLsync, flags: GLbitfield, timeout: GLuint64);
+    //fn client_wait_sync(&self, sync: GLsync, flags: GLbitfield, timeout: GLuint64);
     fn wait_sync(&self, sync: GLsync, flags: GLbitfield, timeout: GLuint64);
     fn delete_sync(&self, sync: GLsync);
     fn texture_range_apple(&self, target: GLenum, data: &[u8]);
