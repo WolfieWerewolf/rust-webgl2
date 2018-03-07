@@ -54,6 +54,99 @@ fn main() {
         , "CopyBufferSubData"
         , "CopyTexSubImage3D"
         , "DeleteQueries"
+        , "DeleteQueriesEXT"
+        , "DeleteSamplers"
+        , "DeleteSync"
+        , "DeleteTransformFeedbacks"
+        , "EGLImageTargetRenderbufferStorageOES"
+        , "EGLImageTargetTexture2DOES"
+        , "EndQuery"
+        , "EndQueryEXT"
+        , "EndTransformFeedback"
+        , "FenceSync"
+        , "FlushMappedBufferRange"
+        , "FramebufferTextureLayer"
+        , "GenQueries"
+        , "GenQueriesEXT"
+        , "GenSamplers"
+        , "GenTransformFeedbacks"
+        , "GetActiveUniformBlockName"
+        , "GetActiveUniformBlockiv"
+        , "GetActiveUniformsiv"
+        , "GetBufferParameteri64v"
+        , "GetBufferPointerv"
+        , "GetFragDataLocation"
+        , "GetInteger64i_v"
+        , "GetInteger64v"
+        , "GetIntegeri_v"
+        , "GetInternalformativ"
+        , "GetProgramBinary"
+        , "GetQueryObjecti64vEXT"
+        , "GetQueryObjectivEXT"
+        , "GetQueryObjectui64vEXT"
+        , "GetQueryObjectuiv"
+        , "GetQueryObjectuivEXT"
+        , "GetQueryiv"
+        , "GetQueryivEXT"
+        , "GetSamplerParameterfv"
+        , "GetSamplerParameteriv"
+        , "GetStringi"
+        , "GetSynciv"
+        , "GetTransformFeedbackVarying"
+        , "GetUniformBlockIndex"
+        , "GetUniformIndices"
+        , "GetUniformuiv"
+        , "GetVertexAttribIiv"
+        , "GetVertexAttribIuiv"
+        , "InsertEventMarkerEXT"
+        , "InvalidateFramebuffer"
+        , "InvalidateSubFramebuffer"
+        , "IsQuery"
+        , "IsQueryEXT"
+        , "IsSampler"
+        , "IsSync"
+        , "IsTransformFeedback"
+        , "MapBufferRange"
+        , "PauseTransformFeedback"
+        , "PopGroupMarkerEXT"
+        , "ProgramBinary"
+        , "ProgramParameteri"
+        , "PushGroupMarkerEXT"
+        , "QueryCounterEXT"
+        , "ReadBuffer"
+        , "RenderbufferStorageMultisample"
+        , "ResumeTransformFeedback"
+        , "SamplerParameterf"
+        , "SamplerParameterfv"
+        , "SamplerParameteri"
+        , "SamplerParameteriv"
+        , "TexImage3D"
+        , "TexSubImage3D"
+        , "TexStorage2D"
+        , "TexStorage3D"
+        , "TransformFeedbackVaryings"
+        , "Uniform1ui"
+        , "Uniform1uiv"
+        , "Uniform2ui"
+        , "Uniform2uiv"
+        , "Uniform3ui"
+        , "Uniform3uiv"
+        , "Uniform4ui"
+        , "Uniform4uiv"
+        , "UniformBlockBinding"
+        , "UniformMatrix2x3fv"
+        , "UniformMatrix2x4fv"
+        , "UniformMatrix3x2fv"
+        , "UniformMatrix3x4fv"
+        , "UniformMatrix4x2fv"
+        , "UniformMatrix4x3fv"
+        , "UnmapBuffer"
+        , "VertexAttribI4i"
+        , "VertexAttribI4iv"
+        , "VertexAttribI4ui"
+        , "VertexAttribI4uiv"
+        , "VertexAttribIPointer"
+        , "WaitSync"
     ];
 
     let mut gles_reg = Registry::new(Api::Gles2, (3, 0), Profile::Core, Fallbacks::All, gles_extensions);
@@ -66,23 +159,14 @@ fn main() {
         //println!("{:?}", ident);
 
         if exclude.contains(&cs) {
-            //println!("{:?}","Excluded --------------------");
-            //println!("{:?}", &cs);
         }
         else {
-            //println!("{:?}","ATTEMPTED --------------------");
-            println!("{:?}", &cs);
+            //println!("{:?}", &cs);
             filtered.insert(Cmd::clone(item));
         }
     });
 
-    //gles_reg.cmds.clear();
-
     gles_reg.cmds = filtered;
-
-
-
-
 
     gles_reg.write_bindings(gl_generator::StructGenerator, &mut file_gles)
         .unwrap();
@@ -92,56 +176,3 @@ fn main() {
     gl_reg.write_bindings(gl_generator::StructGenerator, &mut file_gl_and_gles)
         .unwrap();
 }
-
-//gles_reg.cmds = gles_reg.get_tys().iter().take_while(|item| !exclude.contains(&item) );
-
-//let filtered = gles_reg.get_tys().iter().take_while(|item| !exclude.contains(&item) );
-
-//    gles_reg.enums.iter().for_each(|item|{
-//        println!("{:?}", item)
-//    });
-
-
-
-
-//    gles_reg.cmds.iter().for_each(|item|{
-//        let ident = &item.proto.ident;
-//        let cs:&str = &ident;
-//        if exclude.contains(&cs) {
-//            tys.insert
-//            //    gles_reg.cmds.remove(&item);
-//            //println!("{:?}", ident)
-//        }
-//        //println!("{:?}", ident)
-//    });
-
-//    pub fn get_tys(reg: Registry) -> BTreeSet<&str> {
-//        let mut tys = BTreeSet::new();
-//        for def in &reg.cmds {
-//
-//            let ident = &def.proto.ident;
-//            let cs:&str = &ident;
-//
-//            tys.insert(def.proto.ty.as_ref());
-//            for param in &def.params {
-//                tys.insert(param.ty.as_ref());
-//            }
-//
-////            if !exclude.contains(&cs) {
-////                tys.insert(def.proto.ty.as_ref());
-////                for param in &def.params {
-////                    tys.insert(param.ty.as_ref());
-////                }
-////            }
-//        }
-//        tys
-//    }
-
-//exclude.iter().for_each(|item| {
-//let ident = &item.proto.ident;
-//let cs:&str = &ident;
-//if  gles_reg.cmds.contains(&cs) {
-//gles_reg.cmds.remove(&item.proto.ident);
-//}
-//println!("{:?}", ident)
-//});

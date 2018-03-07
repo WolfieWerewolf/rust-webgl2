@@ -81,6 +81,7 @@ pub fn viewing_matrix(eye: Vec3, up: Vec3, target: Vec3) -> Matrix44 {
     matmul(translate(-eye[0], -eye[1], -eye[2]), matrix)
 }
 
+#[allow(dead_code)]
 pub fn orthogonal_matrix(left: f32, right: f32, top: f32, bottom: f32, near: f32, far: f32) -> Matrix44 {
     let mut matrix = zeros();
     let w = right - left;
