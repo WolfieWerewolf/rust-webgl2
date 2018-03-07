@@ -3,6 +3,7 @@ extern crate emscripten_sys;
 
 mod matrix;
 mod context;
+mod shader_loader;
 
 use context::{
     Context,
@@ -51,9 +52,6 @@ fn main() {
         let ptr = &mut ctx as *mut _ as *mut std::os::raw::c_void;
         emscripten_set_main_loop_arg(Some(loop_wrapper), ptr, 0, 1);
     }
-
-
-
 }
 
 //        let gl = gl::GlFns::load_with(|addr| {

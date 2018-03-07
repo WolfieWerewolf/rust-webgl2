@@ -2,7 +2,7 @@ extern crate gleam;
 extern crate emscripten_sys;
 
 use gleam::gl;
-use gleam::gl::{GLenum, GLuint};
+use gleam::gl::{GLuint};
 use std;
 
 use emscripten_sys::{
@@ -16,6 +16,12 @@ use matrix::{
     perspective_matrix,
     matmul,
     Matrix44,
+};
+
+use shader_loader::{
+    load_shader,
+    VS_SRC,
+    FS_SRC
 };
 
 type GlPtr = std::rc::Rc<gl::Gl>;
@@ -57,19 +63,23 @@ impl Context {
     pub fn new(gl: GlPtr) -> Context {
         let v_shader = load_shader(&gl, gl::VERTEX_SHADER, VS_SRC).unwrap();
         let f_shader = load_shader(&gl, gl::FRAGMENT_SHADER, FS_SRC).unwrap();
+
         let program = gl.create_program();
         gl.attach_shader(program, v_shader);
         gl.attach_shader(program, f_shader);
         gl.link_program(program);
         gl.use_program(program);
+
         let position_location = gl.get_attrib_location(program, "aPosition") as u32;
         let color_location = gl.get_attrib_location(program, "aColor") as u32;
+
         gl.enable_vertex_attrib_array(position_location);
         gl.enable_vertex_attrib_array(color_location);
 
         let buffer = init_buffer(&gl, program).unwrap();
 
-        gl.clear_color(0.0, 0.0, 0.0, 1.0);
+        //gl.clear_color(0.0, 0.0, 0.0, 1.0);
+        gl.clear_color(0.05, 0.15, 0.25, 1.0);
         gl.enable(gl::DEPTH_TEST);
         let (width, height) = get_canvas_size();
         Context {
@@ -99,44 +109,6 @@ impl Context {
         gl.bind_vertex_array(0);
     }
 }
-
-/** TODO MOVE */
-fn load_shader(gl: &GlPtr, shader_type: GLenum, source: &[&[u8]]) -> Option<GLuint> {
-    let shader = gl.create_shader(shader_type);
-    if shader == 0 {
-        return None;
-    }
-    gl.shader_source(shader, source);
-    gl.compile_shader(shader);
-    let compiled = gl.get_shader_iv(shader, gl::COMPILE_STATUS);
-    if compiled == 0 {
-        let log = gl.get_shader_info_log(shader);
-        println!("{}", log);
-        gl.delete_shader(shader);
-        return None;
-    }
-    Some(shader)
-}
-
-
-const VS_SRC: &'static [&[u8]] = &[b"#version 300 es
-        layout(location = 0) in vec3 aPosition;
-        layout(location = 1) in vec3 aColor;
-        uniform mat4 uMVMatrix;
-        uniform mat4 uPMatrix;
-        out vec4 vColor;
-        void main() {
-            gl_Position = uPMatrix * uMVMatrix * vec4(aPosition, 1.0);
-            vColor = vec4(aColor, 1.0);
-        }"];
-
-const FS_SRC: &'static [&[u8]] = &[b"#version 300 es
-        precision mediump float;
-        in vec4 vColor;
-        out vec4 oFragColor;
-        void main() {
-            oFragColor = vColor;
-        }"];
 
 fn init_buffer(gl: &GlPtr, program: GLuint) -> Option<GLuint> {
     let vertices: Vec<f32> = vec![
