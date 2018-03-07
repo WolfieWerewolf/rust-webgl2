@@ -1,9 +1,12 @@
 extern crate gleam;
 extern crate emscripten_sys;
 
+extern crate plain_enum;
+
 mod matrix;
 mod context;
 mod shader_loader;
+
 
 use context::{
     Context,
@@ -29,7 +32,29 @@ pub extern fn hello_world(n: std::os::raw::c_int) -> std::os::raw::c_int {
     n + 1
 }
 
+mod example_enum {
+    use plain_enum::*;
+    plain_enum_mod!{example_enum, ExampleEnum {
+        BUFFER,
+        FRAMEBUFFER,
+        PROGRAM,
+        RENDERBUFFER,
+        SHADER,
+        TEXTURE, // note trailing comma
+    }}
+    pub fn do_stuff(){
+        for value in ExampleEnum::values() {            // iterating over the enum's values
+            println!("{:?}", value);
+        }
+    }
+}
+
 fn main() {
+
+    example_enum::do_stuff();
+    //for value in example_enum::ExampleEnum::values() {            // iterating over the enum's values
+    //    println!("{:?}", value);
+    //}
 
     unsafe {
         let mut attributes: EmscriptenWebGLContextAttributes = std::mem::uninitialized();
@@ -53,10 +78,5 @@ fn main() {
         emscripten_set_main_loop_arg(Some(loop_wrapper), ptr, 0, 1);
     }
 }
-
-//        let gl = gl::GlFns::load_with(|addr| {
-//            let addr = std::ffi::CString::new(addr).unwrap();
-//            emscripten_GetProcAddress(addr.into_raw() as *const _) as *const _
-//        });
 
 
