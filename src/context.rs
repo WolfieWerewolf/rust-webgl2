@@ -144,9 +144,11 @@ fn init_buffer(gl: &GlPtr, program: GLuint) -> Option<GLuint> {
     gl.bind_vertex_array(array);
     gl.enable_vertex_attrib_array(position_location);
     gl.enable_vertex_attrib_array(color_location);
+
     gl.bind_buffer(gl::ARRAY_BUFFER, vertex_buffer);
     gl.buffer_data_untyped(gl::ARRAY_BUFFER, 4 * vertices.len() as isize, vertices.as_ptr() as *const _, gl::STATIC_DRAW);
     gl.vertex_attrib_pointer(position_location, 3, gl::FLOAT, false, 24, 0);
+
     gl.vertex_attrib_pointer(color_location, 3, gl::FLOAT, false, 24, 12);
     gl.bind_buffer(gl::ELEMENT_ARRAY_BUFFER, element_buffer);
     gl.buffer_data_untyped(gl::ELEMENT_ARRAY_BUFFER, 2 * elements.len() as isize, elements.as_ptr() as *const _, gl::STATIC_DRAW);

@@ -12,3 +12,10 @@ https://users.rust-lang.org/t/compiling-to-the-web-with-rust-and-emscripten/7627
 Enums
 https://docs.rs/plain_enum/0.4.0/plain_enum/
 https://stackoverflow.com/questions/21371534/in-rust-is-there-a-way-to-iterate-through-the-values-of-an-enum
+
+
+//https://github.com/Hyper3D/hyper3d-envmapgen
+//https://github.com/Healthire/rust-wasm-game
+
+https://github.com/Healthire/rust-wasm-game
+/** https://qiita.com/_likr/items/71817953b237a32a3015 */

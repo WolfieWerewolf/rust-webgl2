@@ -1,12 +1,16 @@
 extern crate gleam;
 extern crate emscripten_sys;
-
 extern crate plain_enum;
+extern crate serde_json;
 
 mod matrix;
 mod context;
 mod shader_loader;
 
+use shader_loader::{
+    handle_success,
+    handle_error
+};
 
 use context::{
     Context,
@@ -21,7 +25,12 @@ use emscripten_sys::{
     emscripten_webgl_init_context_attributes,
     emscripten_webgl_create_context,
     emscripten_webgl_make_context_current,
-    EmscriptenWebGLContextAttributes
+    EmscriptenWebGLContextAttributes,
+    emscripten_fetch_t,
+    emscripten_fetch_attr_t,
+    emscripten_fetch_attr_init,
+    emscripten_fetch,
+    emscripten_fetch_close,
 };
 
 #[link(name = "_hello_world")]
@@ -55,6 +64,19 @@ fn main() {
     //for value in example_enum::ExampleEnum::values() {            // iterating over the enum's values
     //    println!("{:?}", value);
     //}
+
+    /** Fetch API Test START */
+    unsafe {
+        let mut fetch_arg: emscripten_fetch_attr_t = std::mem::uninitialized();
+        emscripten_fetch_attr_init(&mut fetch_arg);
+        fetch_arg.attributes = 1;
+        fetch_arg.onsuccess = Some(handle_success);
+        fetch_arg.onerror = Some(handle_error);
+        let url = std::ffi::CString::new("js/data.json").unwrap();
+        emscripten_fetch(&mut fetch_arg, url.as_ptr());
+    }
+    /** Fetch API Test END */
+
 
     unsafe {
         let mut attributes: EmscriptenWebGLContextAttributes = std::mem::uninitialized();

@@ -9,36 +9,46 @@
             border: 0;
             padding: 0;
             margin: 0;
-
         }
 
-        .glCanvas {
-            outline: 0;
-            width: 100vw;
-            height: 100vh;
+
+        canvas {
+            width: 100%;
+            height: 100%;
             display: block;
         }
 
+
+
     </style>
 </head>
-<body>
-<canvas width="1024" height="768"/>
-<script>
-    var Module = {
-    canvas: document.querySelector('canvas')
-    };
-    </script>
-
-    <!--<script src="target/asmjs-unknown-emscripten/release/rust-webgl2-example.js"></script>-->
+    <!--<body onload="getModel()">-->
+    <body>
+        <canvas id="glCanvas" width="1024" height="768"></canvas>
         <script>
-        fetch('target/wasm32-unknown-emscripten/release/rust_webgl2_example.wasm')
-          .then((response) => response.arrayBuffer())
-          .then((buffer) => {
-            Module.wasmBinary = buffer;
-            var script = document.createElement('script');
-            script.src = "target/wasm32-unknown-emscripten/release/rust-webgl2-example.js";
-            document.body.appendChild(script)
-          })
+            Module = {
+                canvas: document.querySelector('canvas')
+            };
+        </script>
+
+        <!-- JS Test  -->
+        <!--<script src="js/twgl-full.min.js"></script>-->
+        <!--<script src="js/3d-math.js"></script>-->
+        <!--<script src="js/fundamentals.js"></script>-->
+
+        <!-- Comment / Uncomment this -->
+        <!--<script src="target/asmjs-unknown-emscripten/release/rust-webgl2-example.js"></script>-->
+
+        <!-- Comment / Uncomment this -->
+        <script>
+            fetch('target/wasm32-unknown-emscripten/release/rust_webgl2_example.wasm')
+                .then((response) => response.arrayBuffer())
+                .then((buffer) => {
+                    Module.wasmBinary = buffer;
+                    let script = document.createElement('script');
+                    script.src = "target/wasm32-unknown-emscripten/release/rust-webgl2-example.js";
+                    document.body.appendChild(script)
+                })
         </script>
     </body>
 </html>
