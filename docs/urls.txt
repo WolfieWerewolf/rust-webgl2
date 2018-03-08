@@ -1,0 +1,27 @@
+The following are links that I found interesting.  I'll update it and try to keep some kind of category system going
+on.  Please feel free to add anything you find interesting out there!.
+
+Cargo
+https://stackoverflow.com/questions/33025887/how-to-use-a-local-unpublished-crate
+https://github.com/rust-lang/cargo/issues/1106
+
+Webpack Integration
+https://medium.com/@ianjsikes/get-started-with-rust-webassembly-and-webpack-58d28e219635
+https://github.com/ianjsikes/rust-wasm-webpack-tutorial
+
+JS Interop
+https://users.rust-lang.org/t/compiling-to-the-web-with-rust-and-emscripten/7627/22
+
+Enums
+https://docs.rs/plain_enum/0.4.0/plain_enum/
+https://stackoverflow.com/questions/21371534/in-rust-is-there-a-way-to-iterate-through-the-values-of-an-enum
+
+Emscripten Fetch API
+https://kripken.github.io/emscripten-site/docs/api_reference/fetch.html
+https://qiita.com/_likr/items/71817953b237a32a3015
+https://github.com/kripken/emscripten/issues/5063
+https://github.com/rust-lang/rust/issues/41750
+
+Interesting Examples
+https://github.com/Hyper3D/hyper3d-envmapgen
+https://github.com/Healthire/rust-wasm-game
