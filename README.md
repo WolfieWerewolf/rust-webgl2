@@ -13,7 +13,7 @@ https://likr.github.io/rust-webgl2-example
 # Living Documentation
 The information below was relevant to my first commit however, updating the
 readme all the time won't provide any kind of history and my intention is to
-document he process as I learn Rust with a focus on Webgl2.
+document the process as I learn Rust with a focus on Webgl2.
 
 So I've opened a ticket in this repository... I'll either update that ticket with new information
 as I progress or add new tickets, not sure what works best yet.  Maybe the wiki is a better place?
@@ -22,11 +22,12 @@ This is a learning project so please feel free to jump in and play around, ask q
 I'm happy to share what I've learned, who knows maybe this will become something... 
 
 I don't have a "code of conduct" but I'm generally a friendly guy.. I don't have a lot of spare time, I'm
-pushing it a bit spending time on this as it is, but I only ask that everyone be respectful of each other.  I'll
+pushing it a bit spending time on this as it is, so I only ask that everyone be respectful of each other.  I'll
 do my best to answer questions as soon as time permits...
 
-I am totally open to PR's (there are no design objectives at this time).  The only thing I would ask is that the code be 
-documented to help others understand it... My recommended approach is:
+I am totally open to PR's (there are no design objectives at this time so nothing reasonable will be rejected).  
+
+The only thing I would ask is that the code be documented to help others understand it... My recommended approach is:
 
 - Use in-line comments.
 - Use commit notes.
