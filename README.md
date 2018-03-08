@@ -1,5 +1,4 @@
-# rust-webgl2
-
+# rustKit
 
 This project is based on:
 
